@@ -14,7 +14,7 @@ import { ApiTags } from '@nestjs/swagger';
 
 
 @ApiTags('Checklist Item')
-@Controller('checklist-item')
+@Controller('checklistItem')
 export class ChecklistItemController {
   constructor(private checklistItemsSvc: ChecklistItemService) {}
   @Post()
