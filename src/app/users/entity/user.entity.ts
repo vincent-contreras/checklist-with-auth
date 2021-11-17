@@ -9,20 +9,26 @@ import {
 } from 'typeorm';
 import * as bcrypt from 'bcryptjs';
 import { Exclude } from 'class-transformer';
+import { ApiProperty } from '@nestjs/swagger';
 
 @Entity()
 export class User extends BaseEntity {
+
+  @ApiProperty()
   @PrimaryGeneratedColumn()
   id: number;
 
+  @ApiProperty()
   @Column()
   @CreateDateColumn()
   createdAt: Date;
 
+  @ApiProperty()
   @Column()
   @UpdateDateColumn()
   updatedAt: Date;
 
+  @ApiProperty()
   @Column({ nullable: false, unique: true })
   username: string;
 
@@ -30,6 +36,7 @@ export class User extends BaseEntity {
   @Exclude()
   password: string;
 
+  @ApiProperty()
   @Column({ nullable: false })
   fullName: string;
 

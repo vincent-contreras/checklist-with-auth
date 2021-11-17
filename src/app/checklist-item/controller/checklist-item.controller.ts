@@ -10,7 +10,10 @@ import {
 import { ChecklistItemService } from '../service/checklist-item/checklist-item.service';
 import { ChecklistItemDto } from '../dto/checklist-item.dto';
 import { ChecklistItem } from '../entity/checklist-item.entity';
+import { ApiTags } from '@nestjs/swagger';
 
+
+@ApiTags('Checklist Item')
 @Controller('checklist-item')
 export class ChecklistItemController {
   constructor(private checklistItemsSvc: ChecklistItemService) {}
