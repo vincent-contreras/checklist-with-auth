@@ -12,7 +12,6 @@ import { ChecklistItemDto } from '../dto/checklist-item.dto';
 import { ChecklistItem } from '../entity/checklist-item.entity';
 import { ApiTags } from '@nestjs/swagger';
 
-
 @ApiTags('Checklist Item')
 @Controller('checklistItem')
 export class ChecklistItemController {

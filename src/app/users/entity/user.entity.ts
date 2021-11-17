@@ -13,7 +13,6 @@ import { ApiProperty } from '@nestjs/swagger';
 
 @Entity()
 export class User extends BaseEntity {
-
   @ApiProperty()
   @PrimaryGeneratedColumn()
   id: number;
