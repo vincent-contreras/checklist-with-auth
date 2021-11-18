@@ -17,6 +17,7 @@ import { LocalAuthGuard } from '../local.auth.guard';
 export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post('login')
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async login(@Request() req, @Body() loginDto: AuthLoginDto): Promise<any> {
     return req.user;
   }
