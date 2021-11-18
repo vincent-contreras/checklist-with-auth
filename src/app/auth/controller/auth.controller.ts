@@ -1,4 +1,5 @@
 import {
+  Body,
   ClassSerializerInterceptor,
   Controller,
   Post,
@@ -6,16 +7,17 @@ import {
   UseGuards,
   UseInterceptors
 } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
 import { ApiTags } from '@nestjs/swagger';
+import { AuthLoginDto } from '../dto/auth-login.dto';
+import { LocalAuthGuard } from '../local.auth.guard';
 
 @ApiTags('Authentication')
 @UseInterceptors(ClassSerializerInterceptor)
 @Controller('auth')
 export class AuthController {
-  @UseGuards(AuthGuard('local'))
+  @UseGuards(LocalAuthGuard)
   @Post('login')
-  async login(@Request() req): Promise<any> {
+  async login(@Request() req, @Body() loginDto: AuthLoginDto): Promise<any> {
     return req.user;
   }
 }
