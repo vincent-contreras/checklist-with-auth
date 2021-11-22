@@ -1,4 +1,4 @@
-import { ValidationPipe } from '@nestjs/common';
+import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app/app.module';
 import * as passport from 'passport';
@@ -12,8 +12,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix(BASE_URL);
 
-  new SwaggerConfig(app).setup();
-
   app.useGlobalPipes(new ValidationPipe());
   app.use(new SessionConfig().setRedis());
   app.use(passport.initialize());
@@ -26,6 +24,12 @@ async function bootstrap() {
       return callback(null, true);
     }
   });
+
+  app.enableVersioning({
+    type: VersioningType.URI
+  });
+
+  new SwaggerConfig(app).setup();
 
   await app.listen(8080);
 }

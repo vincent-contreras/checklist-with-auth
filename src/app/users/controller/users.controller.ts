@@ -16,7 +16,7 @@ import { User } from '../entity/user.entity';
 import { UsersService } from '../service/users.service';
 
 @ApiTags('Users')
-@Controller('users')
+@Controller({ version: '1', path: 'users' })
 @UseInterceptors(ClassSerializerInterceptor)
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
