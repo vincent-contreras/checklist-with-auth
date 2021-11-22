@@ -13,7 +13,7 @@ import { LocalAuthGuard } from '../local.auth.guard';
 
 @ApiTags('Authentication')
 @UseInterceptors(ClassSerializerInterceptor)
-@Controller('auth')
+@Controller({ version: '1', path: 'auth' })
 export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post('login')
