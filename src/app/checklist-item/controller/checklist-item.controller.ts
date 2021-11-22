@@ -5,12 +5,13 @@ import {
   Get,
   Param,
   Patch,
-  Post
+  Post,
+  Query
 } from '@nestjs/common';
 import { ChecklistItemService } from '../service/checklist-item/checklist-item.service';
 import { ChecklistItemDto } from '../dto/checklist-item.dto';
 import { ChecklistItem } from '../entity/checklist-item.entity';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Checklist Item')
 @Controller('checklistItem')
@@ -40,9 +41,11 @@ export class ChecklistItemController {
   }
 
   @Delete('/:id')
+  @ApiParam({ name: 'id' })
   async deleteOne(
     @Param('id') id
   ): Promise<{ deleted: boolean; message?: string }> {
-    return this.checklistItemsSvc.deleteOne(id);
+    await this.checklistItemsSvc.findOne(+id);
+    return this.checklistItemsSvc.deleteOne(+id);
   }
 }

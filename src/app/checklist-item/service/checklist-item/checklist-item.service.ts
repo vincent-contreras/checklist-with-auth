@@ -21,8 +21,8 @@ export class ChecklistItemService {
     return this.checklistRepository.find();
   }
 
-  findOne(id): Promise<ChecklistItem> {
-    const checklistItem = this.checklistRepository.findOne(id);
+  async findOne(id): Promise<ChecklistItem> {
+    const checklistItem = await this.checklistRepository.findOne(id);
 
     if (!checklistItem) {
       throw new BadRequestException('Item should exist');
