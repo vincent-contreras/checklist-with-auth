@@ -42,4 +42,15 @@ export class UsersService {
 
     return await this.findOneById(+user.id);
   }
+
+  async deleteOne(id): Promise<{ deleted: boolean; message?: string }> {
+    await this.findOneById(id);
+
+    try {
+      await this.userRepository.delete({ id });
+      return { deleted: true };
+    } catch (err) {
+      return { deleted: false, message: err.message };
+    }
+  }
 }
