@@ -6,10 +6,10 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn
-} from 'typeorm';
-import * as bcrypt from 'bcryptjs';
-import { Exclude } from 'class-transformer';
-import { ApiProperty } from '@nestjs/swagger';
+} from "typeorm";
+import * as bcrypt from "bcryptjs";
+import { Exclude } from "class-transformer";
+import { ApiProperty } from "@nestjs/swagger";
 
 @Entity()
 export class User extends BaseEntity {

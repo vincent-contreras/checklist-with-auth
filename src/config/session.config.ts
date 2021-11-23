@@ -1,6 +1,6 @@
-import * as session from 'express-session';
-import * as connectRedis from 'connect-redis';
-import * as redis from 'redis';
+import * as session from "express-session";
+import * as connectRedis from "connect-redis";
+import * as redis from "redis";
 
 const { SESSION_SECRET, SESSION_TIMEOUT_MINUTE, REDIS_HOST, COOKIE_DOMAIN } =
   process.env;

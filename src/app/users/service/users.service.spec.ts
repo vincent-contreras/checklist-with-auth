@@ -1,21 +1,21 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { getRepositoryToken } from '@nestjs/typeorm';
-import { User } from '../entity/user.entity';
-import { UserRepository } from '../repository/user.repository';
-import { UsersService } from '../service/users.service';
-import { loremIpsum } from 'lorem-ipsum';
-import * as randomEmail from 'random-email';
+import { Test, TestingModule } from "@nestjs/testing";
+import { getRepositoryToken } from "@nestjs/typeorm";
+import { User } from "../entity/user.entity";
+import { UserRepository } from "../repository/user.repository";
+import { UsersService } from "../service/users.service";
+import { loremIpsum } from "lorem-ipsum";
+import * as randomEmail from "random-email";
 
 const expectedResult = new User();
 expectedResult.createdAt = new Date();
 expectedResult.id = 1;
-expectedResult.fullName = loremIpsum({ count: 2, units: 'words' });
+expectedResult.fullName = loremIpsum({ count: 2, units: "words" });
 expectedResult.username = randomEmail();
-expectedResult.password = 'Hello world';
+expectedResult.password = "Hello world";
 
 const resultArray = [];
 
-describe('UsersService', () => {
+describe("UsersService", () => {
   let service: UsersService;
   let repo: UserRepository;
 
@@ -41,7 +41,7 @@ describe('UsersService', () => {
     repo = module.get<UserRepository>(UserRepository);
   });
 
-  it('should be defined', () => {
+  it("should be defined", () => {
     expect(service).toBeDefined();
   });
 });
