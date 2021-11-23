@@ -7,13 +7,17 @@ import * as connectionOptions from '../config/orm.config';
 
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { ResourcesModule } from './resources/resources.module';
+import { UserPrivilegesModule } from './user-privileges/user-privileges.module';
 
 @Module({
   imports: [
     ChecklistItemModule,
     TypeOrmModule.forRoot(connectionOptions),
     AuthModule,
-    UsersModule
+    UsersModule,
+    ResourcesModule,
+    UserPrivilegesModule
   ],
   controllers: [AppController],
   providers: [AppService]
