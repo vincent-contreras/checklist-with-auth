@@ -79,7 +79,7 @@ export class AddResourceAndUserPrivileges1637658217075
 
     await queryRunner.createTable(
       new Table({
-        name: "userPrivilege",
+        name: "user_privilege",
         columns: [
           {
             name: "id",
@@ -138,7 +138,7 @@ export class AddResourceAndUserPrivileges1637658217075
     );
 
     await queryRunner.createForeignKey(
-      "userPrivilege",
+      "user_privilege",
       new TableForeignKey({
         columnNames: ["userId"],
         referencedColumnNames: ["id"],
@@ -148,7 +148,7 @@ export class AddResourceAndUserPrivileges1637658217075
     );
 
     await queryRunner.createForeignKey(
-      "userPrivilege",
+      "user_privilege",
       new TableForeignKey({
         columnNames: ["resourceId"],
         referencedColumnNames: ["id"],
@@ -159,7 +159,7 @@ export class AddResourceAndUserPrivileges1637658217075
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("userPrivilege");
+    await queryRunner.dropTable("user_privilege");
     await queryRunner.dropTable("resource");
   }
 }
