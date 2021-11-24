@@ -10,8 +10,10 @@ import {
 import { UserPrivilegesService } from "./user-privileges.service";
 import { CreateUserPrivilegeDto } from "./dto/create-user-privilege.dto";
 import { UpdateUserPrivilegeDto } from "./dto/update-user-privilege.dto";
+import { ApiTags } from "@nestjs/swagger";
 
-@Controller("user-privileges")
+@ApiTags("User Privileges")
+@Controller({ version: "1", path: "user-privileges" })
 export class UserPrivilegesController {
   constructor(private readonly userPrivilegesService: UserPrivilegesService) {}
 

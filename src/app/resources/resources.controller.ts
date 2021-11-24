@@ -10,8 +10,10 @@ import {
 import { ResourcesService } from "./resources.service";
 import { CreateResourceDto } from "./dto/create-resource.dto";
 import { UpdateResourceDto } from "./dto/update-resource.dto";
+import { ApiTags } from "@nestjs/swagger";
 
-@Controller("resources")
+@ApiTags("Resources")
+@Controller({ version: "1", path: "resources" })
 export class ResourcesController {
   constructor(private readonly resourcesService: ResourcesService) {}
 
