@@ -1,8 +1,8 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { ChecklistItemController } from "./checklist-item.controller";
 import { ChecklistItemDto } from "../dto/checklist-item.dto";
-import { ChecklistItemService } from "../service/checklist-item/checklist-item.service";
-import { ChecklistItem } from "../entity/checklist-item.entity";
+import { ChecklistItemService } from "../services/checklist-item/checklist-item.service";
+import { ChecklistItem } from "../entities/checklist-item.entity";
 import { BadRequestException } from "@nestjs/common";
 
 jest.mock("../service/checklist-item/checklist-item.service");

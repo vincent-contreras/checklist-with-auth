@@ -1,5 +1,5 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { UsersService } from "../service/users.service";
+import { UsersService } from "../services/users.service";
 import { UsersController } from "./users.controller";
 
 jest.mock("../service/users.service");

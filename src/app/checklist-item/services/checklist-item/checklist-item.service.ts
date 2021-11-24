@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from "@nestjs/common";
 import { ChecklistItemDto } from "../../dto/checklist-item.dto";
 import { InjectRepository } from "@nestjs/typeorm";
-import { ChecklistItem } from "../../entity/checklist-item.entity";
+import { ChecklistItem } from "../../entities/checklist-item.entity";
 import { Repository } from "typeorm";
 
 @Injectable()

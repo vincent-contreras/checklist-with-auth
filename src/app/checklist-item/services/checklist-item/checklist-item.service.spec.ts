@@ -3,7 +3,7 @@ import { ChecklistItemService } from "./checklist-item.service";
 import { Repository } from "typeorm";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import { ChecklistItemDto } from "../../dto/checklist-item.dto";
-import { ChecklistItem } from "../../entity/checklist-item.entity";
+import { ChecklistItem } from "../../entities/checklist-item.entity";
 
 const expectedResult = new ChecklistItem();
 expectedResult.id = 0;

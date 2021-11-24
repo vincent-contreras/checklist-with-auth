@@ -1,8 +1,8 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
-import { User } from "../entity/user.entity";
-import { UserRepository } from "../repository/user.repository";
-import { UsersService } from "../service/users.service";
+import { User } from "../entities/user.entity";
+import { UserRepository } from "../repositories/user.repository";
+import { UsersService } from "./users.service";
 import { loremIpsum } from "lorem-ipsum";
 import * as randomEmail from "random-email";
 

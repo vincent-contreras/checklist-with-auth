@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 import { ChecklistItemController } from "./controller/checklist-item.controller";
-import { ChecklistItemService } from "./service/checklist-item/checklist-item.service";
-import { ChecklistItem } from "./entity/checklist-item.entity";
+import { ChecklistItemService } from "./services/checklist-item/checklist-item.service";
+import { ChecklistItem } from "./entities/checklist-item.entity";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
 @Module({
