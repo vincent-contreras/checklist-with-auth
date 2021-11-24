@@ -5,10 +5,10 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn
-} from 'typeorm';
-import { Exclude } from 'class-transformer';
-import { ApiProperty } from '@nestjs/swagger';
-import { UserPrivilege } from '../../user-privileges/entities/user-privilege.entity';
+} from "typeorm";
+import { Exclude } from "class-transformer";
+import { ApiProperty } from "@nestjs/swagger";
+import { UserPrivilege } from "../../user-privileges/entities/user-privilege.entity";
 
 @Entity()
 export class Resource {
@@ -16,37 +16,42 @@ export class Resource {
   @ApiProperty()
   id: number;
 
-  @CreateDateColumn({ type: 'datetime' })
+  @CreateDateColumn({ type: "datetime" })
   @ApiProperty()
   createdAt: Date;
 
-  @UpdateDateColumn({ type: 'datetime' })
+  @UpdateDateColumn({ type: "datetime" })
   @ApiProperty()
   updatedAt: Date;
 
-  @Column({ nullable: false, unique: true, comment: 'Name in source code' })
+  @Column({
+    nullable: false,
+    unique: true,
+    comment: "Name in source code",
+    length: 255
+  })
   @ApiProperty()
   name: string;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, length: 255 })
   @ApiProperty()
   koreanName: string;
 
-  @Column({ nullable: false, default: false })
+  @Column({ type: "bool", nullable: false, default: false })
   @ApiProperty()
-  isCreatable: boolean;
+  creatable: boolean;
 
-  @Column({ nullable: false, default: false })
+  @Column({ type: "bool", nullable: false, default: false })
   @ApiProperty()
-  isReadable: boolean;
+  readable: boolean;
 
-  @Column({ nullable: false, default: false })
+  @Column({ type: "bool", nullable: false, default: false })
   @ApiProperty()
-  isUpdatable: boolean;
+  updatable: boolean;
 
-  @Column({ nullable: false, default: false })
+  @Column({ type: "bool", nullable: false, default: false })
   @ApiProperty()
-  isDeletable: boolean;
+  deletable: boolean;
 
   @OneToMany(() => UserPrivilege, (userPrivilege) => userPrivilege.resource)
   @Exclude()
