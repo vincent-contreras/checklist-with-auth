@@ -39,7 +39,7 @@ describe("--- ChecklistItemController ---", () => {
     expect(controller).toBeDefined();
   });
 
-  it("Item 입력이 Valid 되야 된다", async () => {
+  it("can validate items entered", async () => {
     return controller
       .create(wrongInput1)
       .then(() => {
@@ -50,7 +50,7 @@ describe("--- ChecklistItemController ---", () => {
       });
   });
 
-  it("Item을 추가할 수 있다", async () => {
+  it("can add new items", async () => {
     service.create = jest.fn().mockResolvedValue(resultItem);
 
     return controller.create(resultItem).then((result: ChecklistItem) => {
@@ -59,7 +59,7 @@ describe("--- ChecklistItemController ---", () => {
     });
   });
 
-  it("Item을 한개 조회", async () => {
+  it("can read one item", async () => {
     service.findOne = jest.fn().mockResolvedValue(resultItem);
 
     return controller.getOne(resultItem.id).then((result: ChecklistItem) => {
@@ -68,7 +68,7 @@ describe("--- ChecklistItemController ---", () => {
     });
   });
 
-  it("Item이 존재해야 된다", async () => {
+  it("can show error when item does not exist", async () => {
     return controller
       .getOne(100)
       .then(() => {
@@ -79,7 +79,7 @@ describe("--- ChecklistItemController ---", () => {
       });
   });
 
-  it("리스트 조회 할 수 있다", async () => {
+  it("can show item list", async () => {
     service.findAll = jest.fn().mockResolvedValue(listResult);
 
     return controller.getAll().then((result: []) => {
@@ -88,7 +88,7 @@ describe("--- ChecklistItemController ---", () => {
     });
   });
 
-  it("Item을 수정할 수 있다", async () => {
+  it("can update an item", async () => {
     service.updateOne = jest.fn().mockResolvedValue(updatedItem);
 
     return controller
@@ -99,7 +99,7 @@ describe("--- ChecklistItemController ---", () => {
       });
   });
 
-  it("삭제할 Item이 존재해야 된다", async () => {
+  it("can not delete an item that does not exist", async () => {
     service.deleteOne = jest.fn().mockResolvedValue({ deleted: false });
 
     return controller.deleteOne(resultItem.id).then((result) => {
@@ -108,7 +108,7 @@ describe("--- ChecklistItemController ---", () => {
     });
   });
 
-  it("Item을 삭제할 수 있다", async () => {
+  it("can delete an item", async () => {
     service.deleteOne = jest.fn().mockResolvedValue({ deleted: true });
 
     return controller.deleteOne(resultItem.id).then((result) => {
