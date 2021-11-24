@@ -7,7 +7,7 @@ import {
   Patch,
   Post
 } from "@nestjs/common";
-import { ChecklistItemService } from "../services/checklist-item/checklist-item.service";
+import { ChecklistItemService } from "../services/checklist-item.service";
 import { ChecklistItemDto } from "../dto/checklist-item.dto";
 import { ChecklistItem } from "../entities/checklist-item.entity";
 import { ApiParam, ApiTags } from "@nestjs/swagger";

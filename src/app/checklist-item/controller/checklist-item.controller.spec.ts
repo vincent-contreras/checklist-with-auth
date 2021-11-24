@@ -1,11 +1,11 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { ChecklistItemController } from "./checklist-item.controller";
 import { ChecklistItemDto } from "../dto/checklist-item.dto";
-import { ChecklistItemService } from "../services/checklist-item/checklist-item.service";
+import { ChecklistItemService } from "../services/checklist-item.service";
 import { ChecklistItem } from "../entities/checklist-item.entity";
 import { BadRequestException } from "@nestjs/common";
 
-jest.mock("../services/checklist-item/checklist-item.service");
+jest.mock("../services/checklist-item.service.ts");
 
 const inputDto = new ChecklistItemDto("Go to school");
 const resultItem = new ChecklistItem();
@@ -42,7 +42,7 @@ describe("--- ChecklistItemController ---", () => {
   it("Item 입력이 Valid 되야 된다", async () => {
     return controller
       .create(wrongInput1)
-      .then((result: ChecklistItem) => {
+      .then(() => {
         expect(service.create).toHaveBeenCalled();
       })
       .catch((error) => {
@@ -71,7 +71,7 @@ describe("--- ChecklistItemController ---", () => {
   it("Item이 존재해야 된다", async () => {
     return controller
       .getOne(100)
-      .then((result: ChecklistItem) => {
+      .then(() => {
         expect(service.findOne).toHaveBeenCalled();
       })
       .catch((error) => {

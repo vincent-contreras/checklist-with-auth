@@ -1,9 +1,9 @@
 import { Test, TestingModule } from "@nestjs/testing";
-import { ChecklistItemService } from "./checklist-item.service";
 import { Repository } from "typeorm";
 import { getRepositoryToken } from "@nestjs/typeorm";
-import { ChecklistItemDto } from "../../dto/checklist-item.dto";
-import { ChecklistItem } from "../../entities/checklist-item.entity";
+import { ChecklistItemDto } from "../dto/checklist-item.dto";
+import { ChecklistItem } from "../entities/checklist-item.entity";
+import { ChecklistItemService } from "./checklist-item.service";
 
 const expectedResult = new ChecklistItem();
 expectedResult.id = 0;

@@ -1,7 +1,7 @@
 import { ChecklistItem } from "./checklist-item.entity";
 import { Test, TestingModule } from "@nestjs/testing";
 import { ChecklistItemController } from "../controller/checklist-item.controller";
-import { ChecklistItemService } from "../services/checklist-item/checklist-item.service";
+import { ChecklistItemService } from "../services/checklist-item.service";
 import { Repository } from "typeorm";
 import { getRepositoryToken } from "@nestjs/typeorm";
 
