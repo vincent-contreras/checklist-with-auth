@@ -1,26 +1,47 @@
-import { Injectable } from '@nestjs/common';
-import { CreateResourceDto } from './dto/create-resource.dto';
-import { UpdateResourceDto } from './dto/update-resource.dto';
+import { BadRequestException, Injectable } from "@nestjs/common";
+import { CreateResourceDto } from "./dto/create-resource.dto";
+import { UpdateResourceDto } from "./dto/update-resource.dto";
+import { Resource } from "./entities/resource.entity";
+import { ResourceRepository } from "./repositories/resource.repository";
 
 @Injectable()
 export class ResourcesService {
-  create(createResourceDto: CreateResourceDto) {
-    return 'This action adds a new resource';
+  constructor(private readonly resourceRepository: ResourceRepository) {}
+  async create(createResourceDto: CreateResourceDto) {
+    const newItem = this.resourceRepository.create(createResourceDto);
+    await this.resourceRepository.save(newItem);
+    return newItem;
   }
 
   findAll() {
-    return `This action returns all resources`;
+    return this.resourceRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} resource`;
+  async findOne(id: number): Promise<Resource> {
+    const resource = await this.resourceRepository.findOne(id);
+
+    if (!resource) {
+      throw new BadRequestException("Item should exist");
+    }
+
+    return resource;
   }
 
-  update(id: number, updateResourceDto: UpdateResourceDto) {
-    return `This action updates a #${id} resource`;
+  async updateOne(id: number, updateResourceDto: UpdateResourceDto) {
+    await this.findOne(id);
+
+    await this.resourceRepository.update({ id }, updateResourceDto);
+
+    return this.findOne(id);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} resource`;
+  async deleteOne(id: number) {
+    await this.findOne(id);
+    try {
+      await this.resourceRepository.delete({ id });
+      return { deleted: true };
+    } catch (err) {
+      return { deleted: false, message: err.message };
+    }
   }
 }
