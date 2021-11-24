@@ -8,7 +8,7 @@ import {
 } from "typeorm";
 import { Resource } from "../../resources/entities/resource.entity";
 import { ApiProperty } from "@nestjs/swagger";
-import { User } from "../../users/entity/user.entity";
+import { User } from "../../users/entities/user.entity";
 
 @Entity()
 export class UserPrivilege {

@@ -1,11 +1,11 @@
-import { Injectable } from '@nestjs/common';
-import { CreateUserPrivilegeDto } from './dto/create-user-privilege.dto';
-import { UpdateUserPrivilegeDto } from './dto/update-user-privilege.dto';
+import { Injectable } from "@nestjs/common";
+import { CreateUserPrivilegeDto } from "./dto/create-user-privilege.dto";
+import { UpdateUserPrivilegeDto } from "./dto/update-user-privilege.dto";
 
 @Injectable()
 export class UserPrivilegesService {
   create(createUserPrivilegeDto: CreateUserPrivilegeDto) {
-    return 'This action adds a new userPrivilege';
+    return "This action adds a new userPrivilege";
   }
 
   findAll() {

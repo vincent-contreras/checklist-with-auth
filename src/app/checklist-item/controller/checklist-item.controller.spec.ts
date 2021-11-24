@@ -5,7 +5,7 @@ import { ChecklistItemService } from "../services/checklist-item/checklist-item.
 import { ChecklistItem } from "../entities/checklist-item.entity";
 import { BadRequestException } from "@nestjs/common";
 
-jest.mock("../service/checklist-item/checklist-item.service");
+jest.mock("../services/checklist-item/checklist-item.service");
 
 const inputDto = new ChecklistItemDto("Go to school");
 const resultItem = new ChecklistItem();
