@@ -1,21 +1,21 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { ChecklistItemService } from './checklist-item.service';
-import { Repository } from 'typeorm';
-import { getRepositoryToken } from '@nestjs/typeorm';
-import { ChecklistItemDto } from '../../dto/checklist-item.dto';
-import { ChecklistItem } from '../../entity/checklist-item.entity';
+import { Test, TestingModule } from "@nestjs/testing";
+import { Repository } from "typeorm";
+import { getRepositoryToken } from "@nestjs/typeorm";
+import { ChecklistItemDto } from "../dto/checklist-item.dto";
+import { ChecklistItem } from "../entities/checklist-item.entity";
+import { ChecklistItemService } from "./checklist-item.service";
 
 const expectedResult = new ChecklistItem();
 expectedResult.id = 0;
-expectedResult.item = 'Test';
+expectedResult.item = "Test";
 
 const existingItem = new ChecklistItem();
 existingItem.id = 1;
-existingItem.item = 'Go to heaven';
+existingItem.item = "Go to heaven";
 
 const resultArray = [expectedResult];
 
-describe('--- ChecklistItemService ---', () => {
+describe("--- ChecklistItemService ---", () => {
   let service: ChecklistItemService;
   let repo: Repository<ChecklistItem>;
 
@@ -43,11 +43,11 @@ describe('--- ChecklistItemService ---', () => {
     );
   });
 
-  it('should be defined', () => {
+  it("should be defined", () => {
     expect(service).toBeDefined();
   });
 
-  it('Item을 추가할 수 있다', async () => {
+  it("Item을 추가할 수 있다", async () => {
     // const result = await service.create(expectedResult)
     // expect(result).toEqual(expectedResult);
 
@@ -58,12 +58,12 @@ describe('--- ChecklistItemService ---', () => {
     });
   });
 
-  it('List를 조회 할 수 있다', async () => {
+  it("List를 조회 할 수 있다", async () => {
     const returnList = await service.findAll();
     expect(returnList).toEqual(resultArray);
   });
 
-  it('아이템 한개 조회', async () => {
+  it("아이템 한개 조회", async () => {
     return service
       .findOne({ id: expectedResult.id })
       .then((result: ChecklistItem) => {
@@ -74,8 +74,8 @@ describe('--- ChecklistItemService ---', () => {
       });
   });
 
-  it('Item을 수정할 수 있다', async () => {
-    const updatedItem = new ChecklistItemDto('Go to Hell');
+  it("Item을 수정할 수 있다", async () => {
+    const updatedItem = new ChecklistItemDto("Go to Hell");
 
     // override original find one function
     repo.findOne = jest.fn().mockResolvedValue(updatedItem);
@@ -87,7 +87,7 @@ describe('--- ChecklistItemService ---', () => {
         expect(result).toBe(updatedItem);
       });
   });
-  it('Item을 삭제할 수 있다', async () => {
+  it("Item을 삭제할 수 있다", async () => {
     await expect(service.deleteOne(expectedResult.id)).resolves.toEqual({
       deleted: true
     });

@@ -1,8 +1,8 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
-import { ChecklistItemDto } from '../../dto/checklist-item.dto';
-import { InjectRepository } from '@nestjs/typeorm';
-import { ChecklistItem } from '../../entity/checklist-item.entity';
-import { Repository } from 'typeorm';
+import { BadRequestException, Injectable } from "@nestjs/common";
+import { ChecklistItemDto } from "../dto/checklist-item.dto";
+import { InjectRepository } from "@nestjs/typeorm";
+import { ChecklistItem } from "../entities/checklist-item.entity";
+import { Repository } from "typeorm";
 
 @Injectable()
 export class ChecklistItemService {
@@ -25,7 +25,7 @@ export class ChecklistItemService {
     const checklistItem = await this.checklistRepository.findOne(id);
 
     if (!checklistItem) {
-      throw new BadRequestException('Item should exist');
+      throw new BadRequestException("Item should exist");
     }
 
     return checklistItem;
@@ -38,7 +38,7 @@ export class ChecklistItemService {
     const item = await this.checklistRepository.findOne(id);
 
     if (!item) {
-      throw new BadRequestException('Item should exist');
+      throw new BadRequestException("Item should exist");
     }
     await this.checklistRepository.update({ id }, updatedValue);
     return item;
