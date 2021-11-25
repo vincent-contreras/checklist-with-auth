@@ -29,7 +29,7 @@ export class ResourcesController {
 
   @Get(":id")
   findOne(@Param("id") id: string) {
-    return this.resourcesService.findOne(+id);
+    return this.resourcesService.findOneById(+id);
   }
 
   @Patch(":id")

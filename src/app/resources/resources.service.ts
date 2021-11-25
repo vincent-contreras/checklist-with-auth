@@ -17,7 +17,7 @@ export class ResourcesService {
     return this.resourceRepository.find();
   }
 
-  async findOne(id: number): Promise<Resource> {
+  async findOneById(id: number): Promise<Resource> {
     const resource = await this.resourceRepository.findOne(id);
 
     if (!resource) {
@@ -28,15 +28,15 @@ export class ResourcesService {
   }
 
   async updateOne(id: number, updateResourceDto: UpdateResourceDto) {
-    await this.findOne(id);
+    await this.findOneById(id);
 
     await this.resourceRepository.update({ id }, updateResourceDto);
 
-    return this.findOne(id);
+    return this.findOneById(id);
   }
 
   async deleteOne(id: number) {
-    await this.findOne(id);
+    await this.findOneById(id);
     try {
       await this.resourceRepository.delete({ id });
       return { deleted: true };
