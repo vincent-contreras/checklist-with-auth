@@ -17,8 +17,8 @@ import { ApiParam, ApiTags } from "@nestjs/swagger";
 export class ChecklistItemController {
   constructor(private checklistItemsSvc: ChecklistItemService) {}
   @Post()
-  create(@Body() item: ChecklistItemDto): Promise<ChecklistItem> {
-    return this.checklistItemsSvc.create(item);
+  async create(@Body() item: ChecklistItemDto): Promise<ChecklistItem> {
+    return await this.checklistItemsSvc.create(item);
   }
 
   @Get()
@@ -27,8 +27,8 @@ export class ChecklistItemController {
   }
 
   @Get("/:id")
-  getOne(@Param("id") id: number): Promise<ChecklistItem> {
-    return this.checklistItemsSvc.findOne({ id: id });
+  async getOne(@Param("id") id: number): Promise<ChecklistItem> {
+    return await this.checklistItemsSvc.findOne({ id: id });
   }
 
   @Patch("/:id")
