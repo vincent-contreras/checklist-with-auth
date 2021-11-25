@@ -10,7 +10,7 @@ import {
 import { UserPrivilegesService } from "./user-privileges.service";
 import { CreateUserPrivilegeDto } from "./dto/create-user-privilege.dto";
 import { UpdateUserPrivilegeDto } from "./dto/update-user-privilege.dto";
-import { ApiTags } from "@nestjs/swagger";
+import { ApiBody, ApiTags } from "@nestjs/swagger";
 
 @ApiTags("User Privileges")
 @Controller({ version: "1", path: "user-privileges" })
@@ -18,8 +18,15 @@ export class UserPrivilegesController {
   constructor(private readonly userPrivilegesService: UserPrivilegesService) {}
 
   @Post()
-  create(@Body() createUserPrivilegeDto: CreateUserPrivilegeDto) {
-    return this.userPrivilegesService.create(createUserPrivilegeDto);
+  @ApiBody({ type: CreateUserPrivilegeDto, isArray: true })
+  async create(@Body() createUserPrivilegeDtos: CreateUserPrivilegeDto[]) {
+    const result = [];
+    for (const createUserPrivilegeDto of createUserPrivilegeDtos) {
+      result.push(
+        await this.userPrivilegesService.create(createUserPrivilegeDto)
+      );
+    }
+    return result;
   }
 
   @Get()
