@@ -36,7 +36,7 @@ export class UserPrivilegesController {
 
   @Get(":id")
   findOne(@Param("id") id: string) {
-    return this.userPrivilegesService.findOne(+id);
+    return this.userPrivilegesService.findOneById(+id);
   }
 
   @Patch(":id")
@@ -49,6 +49,6 @@ export class UserPrivilegesController {
 
   @Delete(":id")
   remove(@Param("id") id: string) {
-    return this.userPrivilegesService.remove(+id);
+    return this.userPrivilegesService.deleteOne(+id);
   }
 }

@@ -1,9 +1,9 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
-import { ResourcesService } from '../resources/resources.service';
-import { UsersService } from '../users/services/users.service';
-import { CreateUserPrivilegeDto } from './dto/create-user-privilege.dto';
-import { UpdateUserPrivilegeDto } from './dto/update-user-privilege.dto';
-import { UserPrivilegeRepository } from './repositories/user-privilege.repository';
+import { BadRequestException, Injectable } from "@nestjs/common";
+import { ResourcesService } from "../resources/resources.service";
+import { UsersService } from "../users/services/users.service";
+import { CreateUserPrivilegeDto } from "./dto/create-user-privilege.dto";
+import { UpdateUserPrivilegeDto } from "./dto/update-user-privilege.dto";
+import { UserPrivilegeRepository } from "./repositories/user-privilege.repository";
 
 @Injectable()
 export class UserPrivilegesService {
@@ -13,8 +13,12 @@ export class UserPrivilegesService {
     private readonly resourceService: ResourcesService
   ) {}
   async create(createUserPrivilegeDto: CreateUserPrivilegeDto) {
-    const user = await this.userService.findOneById(createUserPrivilegeDto.userId);
-    const resource = await this.resourceService.findOneById(createUserPrivilegeDto.resourceId);
+    const user = await this.userService.findOneById(
+      createUserPrivilegeDto.userId
+    );
+    const resource = await this.resourceService.findOneById(
+      createUserPrivilegeDto.resourceId
+    );
 
     const duplicateEntry = await this.userPrivilegeRepository.findOne({
       userId: user.id,
@@ -22,7 +26,7 @@ export class UserPrivilegesService {
     });
 
     if (duplicateEntry) {
-      throw new BadRequestException('Privilege already exists');
+      throw new BadRequestException("Privilege already exists");
     }
 
     const newPrivilege = this.userPrivilegeRepository.create(
@@ -31,34 +35,37 @@ export class UserPrivilegesService {
     await this.userPrivilegeRepository.save(newPrivilege);
 
     return newPrivilege;
+  }
 
-    /*
-    const duplicateUser = await this.findOneByUsername(createUserDto.username);
+  async findAll() {
+    return await this.userPrivilegeRepository.find();
+  }
 
-    if (duplicateUser) {
-      throw new BadRequestException(
-        `User ${createUserDto.username} already exists`
-      );
+  async findOneById(id: number) {
+    const privilege = await this.userPrivilegeRepository.findOne({ id: id });
+
+    if (!privilege) {
+      throw new BadRequestException(`Privilege ID ${id} does not exist`);
     }
-    const newItem = this.userRepository.create(createUserDto);
-    await this.userRepository.save(newItem);
-    return newItem;
-    */
+
+    return privilege;
   }
 
-  findAll() {
-    return `This action returns all userPrivileges`;
+  async update(id: number, updateUserPrivilegeDto: UpdateUserPrivilegeDto) {
+    await this.findOneById(id);
+
+    await this.userPrivilegeRepository.update({ id }, updateUserPrivilegeDto);
+
+    return this.findOneById(id);
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} userPrivilege`;
-  }
-
-  update(id: number, updateUserPrivilegeDto: UpdateUserPrivilegeDto) {
-    return `This action updates a #${id} userPrivilege`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} userPrivilege`;
+  async deleteOne(id: number) {
+    await this.findOneById(id);
+    try {
+      await this.userPrivilegeRepository.delete({ id });
+      return { deleted: true };
+    } catch (err) {
+      return { deleted: false, message: err.message };
+    }
   }
 }
