@@ -41,7 +41,8 @@ export class AddResourceAndUserPrivileges1637658217075
             type: "varchar",
             length: "255",
             isNullable: false,
-            isUnique: true
+            isUnique: true,
+            comment: "Name in source code"
           },
           {
             name: "koreanName",
