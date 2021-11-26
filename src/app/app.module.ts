@@ -9,6 +9,7 @@ import { AuthModule } from "./auth/auth.module";
 import { UsersModule } from "./users/users.module";
 import { ResourcesModule } from "./resources/resources.module";
 import { UserPrivilegesModule } from "./user-privileges/user-privileges.module";
+import { CommonsModule } from './commons/commons.module';
 
 @Module({
   imports: [
@@ -17,7 +18,8 @@ import { UserPrivilegesModule } from "./user-privileges/user-privileges.module";
     AuthModule,
     UsersModule,
     ResourcesModule,
-    UserPrivilegesModule
+    UserPrivilegesModule,
+    CommonsModule
   ],
   controllers: [AppController],
   providers: [AppService]

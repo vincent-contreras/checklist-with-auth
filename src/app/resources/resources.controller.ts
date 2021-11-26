@@ -12,6 +12,7 @@ import { CreateResourceDto } from "./dto/create-resource.dto";
 import { UpdateResourceDto } from "./dto/update-resource.dto";
 import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { Resource } from "./entities/resource.entity";
+import { DeleteResponse } from "../commons/dto/delete-response.dto";
 
 @ApiTags("Resources")
 @Controller({ version: "1", path: "resources" })
@@ -71,7 +72,7 @@ export class ResourcesController {
     summary: "Delete resource",
     description: "Deletes one resource object"
   })
-  @ApiResponse({ status: 200, type: Resource, isArray: false })
+  @ApiResponse({ status: 200, type: DeleteResponse, isArray: false })
   remove(@Param("id") id: string) {
     return this.resourcesService.deleteOne(+id);
   }

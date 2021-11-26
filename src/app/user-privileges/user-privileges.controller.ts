@@ -12,6 +12,7 @@ import { CreateUserPrivilegeDto } from "./dto/create-user-privilege.dto";
 import { UpdateUserPrivilegeDto } from "./dto/update-user-privilege.dto";
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from "@nestjs/swagger";
 import { UserPrivilege } from "./entities/user-privilege.entity";
+import { DeleteResponse } from "../commons/dto/delete-response.dto";
 
 @ApiTags("User Privileges")
 @Controller({ version: "1", path: "user-privileges" })
@@ -74,7 +75,7 @@ export class UserPrivilegesController {
     summary: "Delete user privilege",
     description: "Deletes one user privilege"
   })
-  @ApiResponse({ status: 200, type: UserPrivilege, isArray: true })
+  @ApiResponse({ status: 200, type: DeleteResponse, isArray: false })
   remove(@Param("id") id: string) {
     return this.userPrivilegesService.deleteOne(+id);
   }

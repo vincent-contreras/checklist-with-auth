@@ -10,6 +10,7 @@ import {
   UseInterceptors
 } from "@nestjs/common";
 import { ApiOperation, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { DeleteResponse } from "../../commons/dto/delete-response.dto";
 import { CreateUserDto } from "../dto/create-user.dto";
 import { UpdateUserDto } from "../dto/update-user.dto";
 import { User } from "../entities/user.entity";
@@ -61,6 +62,7 @@ export class UsersController {
     summary: "Delete one user by ID",
     description: "Deletes one user object by providing ID"
   })
+  @ApiResponse({ status: 200, type: DeleteResponse, isArray: false })
   async deleteOne(
     @Param("id") id
   ): Promise<{ deleted: boolean; message?: string }> {
