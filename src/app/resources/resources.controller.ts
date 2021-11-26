@@ -10,7 +10,13 @@ import {
 import { ResourcesService } from "./resources.service";
 import { CreateResourceDto } from "./dto/create-resource.dto";
 import { UpdateResourceDto } from "./dto/update-resource.dto";
-import { ApiBody, ApiOperation, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
+import {
+  ApiBody,
+  ApiOperation,
+  ApiParam,
+  ApiResponse,
+  ApiTags
+} from "@nestjs/swagger";
 import { Resource } from "./entities/resource.entity";
 import { DeleteResponse } from "../commons/dto/delete-response.dto";
 
