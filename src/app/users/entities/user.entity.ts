@@ -9,9 +9,10 @@ import {
   UpdateDateColumn
 } from "typeorm";
 import * as bcrypt from "bcryptjs";
-import { Exclude } from "class-transformer";
+import { Exclude, Expose } from "class-transformer";
 import { ApiProperty } from "@nestjs/swagger";
 import { UserPrivilege } from "../../user-privileges/entities/user-privilege.entity";
+import { Role } from "../enums/role.enum";
 
 @Entity()
 export class User extends BaseEntity {
@@ -40,6 +41,36 @@ export class User extends BaseEntity {
   @ApiProperty()
   @Column({ nullable: false })
   fullName: string;
+
+  @ApiProperty()
+  @Column({ nullable: true })
+  lastLoginAt: Date;
+
+  @ApiProperty()
+  @Column({ nullable: true })
+  activatedAt: Date;
+
+  @ApiProperty()
+  @Column({ nullable: true })
+  deactivatedAt: Date;
+
+  @ApiProperty()
+  @Column({
+    type: "enum",
+    enum: Role,
+    default: Role.User,
+    nullable: false
+  })
+  role: Role;
+
+  @ApiProperty({ type: "boolean" })
+  @Expose()
+  get isActive() {
+    return (
+      (!!this.activatedAt && !this.deactivatedAt) ||
+      this.activatedAt > this.deactivatedAt
+    );
+  }
 
   @OneToMany(() => UserPrivilege, (userPrivilege) => userPrivilege.user, {
     eager: true
