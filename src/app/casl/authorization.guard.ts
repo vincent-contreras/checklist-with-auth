@@ -26,7 +26,7 @@ export class AuthorizationGuard implements CanActivate {
 
     const { user } = context.switchToHttp().getRequest();
 
-    if (!(user && user.localUser)) {
+    if (!user) {
       throw new UnauthorizedException("User is not currently logged in.");
     }
 
