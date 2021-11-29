@@ -7,13 +7,11 @@ import { BadRequestException } from "@nestjs/common";
 
 jest.mock("../services/checklist-item.service.ts");
 
-const inputDto = new ChecklistItemDto("Go to school");
 const resultItem = new ChecklistItem();
 resultItem.id = 1;
 resultItem.item = "Go to school";
 
 const wrongInput1 = new ChecklistItemDto("");
-const wrongInput2 = new ChecklistItemDto("");
 
 const updatedItem = new ChecklistItem();
 updatedItem.id = 1;

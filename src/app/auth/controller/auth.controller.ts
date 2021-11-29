@@ -24,12 +24,12 @@ export class AuthController {
 
   @UseGuards(LocalAuthGuard)
   @Post("login")
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   @ApiResponse({ status: 200, type: User })
   @ApiOperation({
     summary: "Do user login",
     description: "Do user login by providing a username and password."
   })
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async login(@Request() req, @Body() loginDto: AuthLoginDto): Promise<any> {
     return req.user;
   }

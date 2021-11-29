@@ -4,7 +4,6 @@ import {
   Table,
   TableForeignKey
 } from "typeorm";
-import { Resource } from "../app/resources/entities/resource.entity";
 
 export class AddResourceAndUserPrivileges1637658217075
   implements MigrationInterface
