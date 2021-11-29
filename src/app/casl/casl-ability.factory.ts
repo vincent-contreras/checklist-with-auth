@@ -5,7 +5,6 @@ import {
   ExtractSubjectType,
   Subject
 } from "@casl/ability";
-
 import { Injectable } from "@nestjs/common";
 import { User } from "../users/entities/user.entity";
 import { Repository } from "typeorm";
