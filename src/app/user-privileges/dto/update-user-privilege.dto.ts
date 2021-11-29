@@ -1,6 +1,5 @@
-import { ApiProperty, PartialType } from "@nestjs/swagger";
+import { ApiProperty } from "@nestjs/swagger";
 import { IsBoolean, IsNotEmpty, IsNumber, IsOptional } from "class-validator";
-import { CreateUserPrivilegeDto } from "./create-user-privilege.dto";
 
 export class UpdateUserPrivilegeDto {
   @ApiProperty()

@@ -10,7 +10,11 @@ export class AuthService {
     const user = await this.usersService.findOneByUsername(username);
 
     if (!(await user?.validatePassword(password))) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException("Invalid password.");
+    }
+
+    if (!user.activatedAt) {
+      throw new UnauthorizedException("User is currently not activated.");
     }
 
     return user;

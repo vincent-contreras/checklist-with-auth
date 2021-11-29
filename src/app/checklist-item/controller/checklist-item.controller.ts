@@ -10,7 +10,8 @@ import {
 import { ChecklistItemService } from "../services/checklist-item.service";
 import { ChecklistItemDto } from "../dto/checklist-item.dto";
 import { ChecklistItem } from "../entities/checklist-item.entity";
-import { ApiParam, ApiTags } from "@nestjs/swagger";
+import { ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
+import { DeleteResponse } from "../../commons/dto/delete-response.dto";
 
 @ApiTags("Checklist Item")
 @Controller({ version: "1", path: "checklistItem" })
@@ -41,6 +42,7 @@ export class ChecklistItemController {
 
   @Delete("/:id")
   @ApiParam({ name: "id" })
+  @ApiResponse({ status: 200, type: DeleteResponse, isArray: false })
   async deleteOne(
     @Param("id") id
   ): Promise<{ deleted: boolean; message?: string }> {
