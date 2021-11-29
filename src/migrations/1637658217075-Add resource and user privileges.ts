@@ -3,7 +3,7 @@ import {
   QueryRunner,
   Table,
   TableForeignKey
-} from "typeorm";
+} from 'typeorm';
 
 export class AddResourceAndUserPrivileges1637658217075
   implements MigrationInterface
@@ -11,65 +11,65 @@ export class AddResourceAndUserPrivileges1637658217075
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "resource",
+        name: 'resource',
         columns: [
           {
-            name: "id",
-            type: "int",
+            name: 'id',
+            type: 'int',
             isPrimary: true,
             isGenerated: true,
-            generationStrategy: "increment"
+            generationStrategy: 'increment'
           },
           {
-            name: "createdAt",
-            type: "datetime",
+            name: 'createdAt',
+            type: 'datetime',
             precision: 6,
             isNullable: false,
-            default: "CURRENT_TIMESTAMP(6)"
+            default: 'CURRENT_TIMESTAMP(6)'
           },
           {
-            name: "updatedAt",
-            type: "datetime",
+            name: 'updatedAt',
+            type: 'datetime',
             precision: 6,
             isNullable: false,
-            default: "CURRENT_TIMESTAMP(6)",
-            onUpdate: "CURRENT_TIMESTAMP(6)"
+            default: 'CURRENT_TIMESTAMP(6)',
+            onUpdate: 'CURRENT_TIMESTAMP(6)'
           },
           {
-            name: "name",
-            type: "varchar",
-            length: "255",
+            name: 'name',
+            type: 'varchar',
+            length: '255',
             isNullable: false,
             isUnique: true,
-            comment: "Name in source code"
+            comment: 'Name in source code'
           },
           {
-            name: "koreanName",
-            type: "varchar",
-            length: "255",
+            name: 'koreanName',
+            type: 'varchar',
+            length: '255',
             isNullable: false
           },
           {
-            name: "creatable",
-            type: "bool",
+            name: 'creatable',
+            type: 'bool',
             isNullable: false,
             default: false
           },
           {
-            name: "readable",
-            type: "bool",
+            name: 'readable',
+            type: 'bool',
             isNullable: false,
             default: false
           },
           {
-            name: "updatable",
-            type: "bool",
+            name: 'updatable',
+            type: 'bool',
             isNullable: false,
             default: false
           },
           {
-            name: "deletable",
-            type: "bool",
+            name: 'deletable',
+            type: 'bool',
             isNullable: false,
             default: false
           }
@@ -79,58 +79,58 @@ export class AddResourceAndUserPrivileges1637658217075
 
     await queryRunner.createTable(
       new Table({
-        name: "user_privilege",
+        name: 'user_privilege',
         columns: [
           {
-            name: "id",
-            type: "int",
+            name: 'id',
+            type: 'int',
             isPrimary: true,
             isGenerated: true,
-            generationStrategy: "increment"
+            generationStrategy: 'increment'
           },
           {
-            name: "createdAt",
-            type: "datetime",
+            name: 'createdAt',
+            type: 'datetime',
             precision: 6,
             isNullable: false,
-            default: "CURRENT_TIMESTAMP(6)"
+            default: 'CURRENT_TIMESTAMP(6)'
           },
           {
-            name: "updatedAt",
-            type: "datetime",
+            name: 'updatedAt',
+            type: 'datetime',
             precision: 6,
             isNullable: false,
-            default: "CURRENT_TIMESTAMP(6)",
-            onUpdate: "CURRENT_TIMESTAMP(6)"
+            default: 'CURRENT_TIMESTAMP(6)',
+            onUpdate: 'CURRENT_TIMESTAMP(6)'
           },
           {
-            name: "resourceId",
-            type: "int",
+            name: 'resourceId',
+            type: 'int',
             isNullable: false
           },
           {
-            name: "userId",
-            type: "int",
+            name: 'userId',
+            type: 'int',
             isNullable: false
           },
           {
-            name: "canCreate",
-            type: "bool",
+            name: 'canCreate',
+            type: 'bool',
             isNullable: false
           },
           {
-            name: "canRead",
-            type: "bool",
+            name: 'canRead',
+            type: 'bool',
             isNullable: false
           },
           {
-            name: "canUpdate",
-            type: "bool",
+            name: 'canUpdate',
+            type: 'bool',
             isNullable: false
           },
           {
-            name: "canDelete",
-            type: "bool",
+            name: 'canDelete',
+            type: 'bool',
             isNullable: false
           }
         ]
@@ -138,28 +138,28 @@ export class AddResourceAndUserPrivileges1637658217075
     );
 
     await queryRunner.createForeignKey(
-      "user_privilege",
+      'user_privilege',
       new TableForeignKey({
-        columnNames: ["userId"],
-        referencedColumnNames: ["id"],
-        referencedTableName: "user",
-        onDelete: "NO ACTION"
+        columnNames: ['userId'],
+        referencedColumnNames: ['id'],
+        referencedTableName: 'user',
+        onDelete: 'NO ACTION'
       })
     );
 
     await queryRunner.createForeignKey(
-      "user_privilege",
+      'user_privilege',
       new TableForeignKey({
-        columnNames: ["resourceId"],
-        referencedColumnNames: ["id"],
-        referencedTableName: "resource",
-        onDelete: "NO ACTION"
+        columnNames: ['resourceId'],
+        referencedColumnNames: ['id'],
+        referencedTableName: 'resource',
+        onDelete: 'NO ACTION'
       })
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("user_privilege");
-    await queryRunner.dropTable("resource");
+    await queryRunner.dropTable('user_privilege');
+    await queryRunner.dropTable('resource');
   }
 }

@@ -1,5 +1,5 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { IsBoolean, IsNotEmpty, IsString, MaxLength } from "class-validator";
+import { ApiProperty } from '@nestjs/swagger';
+import { IsBoolean, IsNotEmpty, IsString, MaxLength } from 'class-validator';
 
 export class CreateResourceDto {
   @ApiProperty()

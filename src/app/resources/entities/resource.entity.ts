@@ -5,10 +5,10 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn
-} from "typeorm";
-import { Exclude } from "class-transformer";
-import { ApiProperty } from "@nestjs/swagger";
-import { UserPrivilege } from "../../user-privileges/entities/user-privilege.entity";
+} from 'typeorm';
+import { Exclude } from 'class-transformer';
+import { ApiProperty } from '@nestjs/swagger';
+import { UserPrivilege } from '../../user-privileges/entities/user-privilege.entity';
 
 @Entity()
 export class Resource {
@@ -16,18 +16,18 @@ export class Resource {
   @ApiProperty()
   id: number;
 
-  @CreateDateColumn({ type: "datetime" })
+  @CreateDateColumn({ type: 'datetime' })
   @ApiProperty()
   createdAt: Date;
 
-  @UpdateDateColumn({ type: "datetime" })
+  @UpdateDateColumn({ type: 'datetime' })
   @ApiProperty()
   updatedAt: Date;
 
   @Column({
     nullable: false,
     unique: true,
-    comment: "Name in source code",
+    comment: 'Name in source code',
     length: 255
   })
   @ApiProperty()
@@ -37,19 +37,19 @@ export class Resource {
   @ApiProperty()
   koreanName: string;
 
-  @Column({ type: "bool", nullable: false, default: false })
+  @Column({ type: 'bool', nullable: false, default: false })
   @ApiProperty()
   creatable: boolean;
 
-  @Column({ type: "bool", nullable: false, default: false })
+  @Column({ type: 'bool', nullable: false, default: false })
   @ApiProperty()
   readable: boolean;
 
-  @Column({ type: "bool", nullable: false, default: false })
+  @Column({ type: 'bool', nullable: false, default: false })
   @ApiProperty()
   updatable: boolean;
 
-  @Column({ type: "bool", nullable: false, default: false })
+  @Column({ type: 'bool', nullable: false, default: false })
   @ApiProperty()
   deletable: boolean;
 

@@ -1,9 +1,9 @@
-import { Resource } from "../resources/entities/resource.entity";
-import { User } from "../users/entities/user.entity";
-import { CaslAbilityFactory } from "./casl-ability.factory";
-import { TypeOrmModule } from "@nestjs/typeorm";
-import { forwardRef, Module } from "@nestjs/common";
-import { ResourcesModule } from "../resources/resources.module";
+import { Resource } from '../resources/entities/resource.entity';
+import { User } from '../users/entities/user.entity';
+import { CaslAbilityFactory } from './casl-ability.factory';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { forwardRef, Module } from '@nestjs/common';
+import { ResourcesModule } from '../resources/resources.module';
 
 @Module({
   providers: [CaslAbilityFactory],

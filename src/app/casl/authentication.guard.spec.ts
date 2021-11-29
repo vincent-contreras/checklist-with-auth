@@ -1,7 +1,7 @@
-import { AuthorizationGuard } from "./authorization.guard";
+import { AuthorizationGuard } from './authorization.guard';
 
-describe("AuthenticationGuard", () => {
-  it("should be defined", () => {
+describe('AuthenticationGuard', () => {
+  it('should be defined', () => {
     expect(new AuthorizationGuard()).toBeDefined();
   });
 });

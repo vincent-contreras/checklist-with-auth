@@ -1,9 +1,9 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
-import { ResourcesService } from "../resources/resources.service";
-import { UsersService } from "../users/services/users.service";
-import { CreateUserPrivilegeDto } from "./dto/create-user-privilege.dto";
-import { UpdateUserPrivilegeDto } from "./dto/update-user-privilege.dto";
-import { UserPrivilegeRepository } from "./repositories/user-privilege.repository";
+import { BadRequestException, Injectable } from '@nestjs/common';
+import { ResourcesService } from '../resources/resources.service';
+import { UsersService } from '../users/services/users.service';
+import { CreateUserPrivilegeDto } from './dto/create-user-privilege.dto';
+import { UpdateUserPrivilegeDto } from './dto/update-user-privilege.dto';
+import { UserPrivilegeRepository } from './repositories/user-privilege.repository';
 
 @Injectable()
 export class UserPrivilegesService {
@@ -26,7 +26,7 @@ export class UserPrivilegesService {
     });
 
     if (duplicateEntry) {
-      throw new BadRequestException("Privilege already exists");
+      throw new BadRequestException('Privilege already exists');
     }
 
     const newPrivilege = this.userPrivilegeRepository.create(

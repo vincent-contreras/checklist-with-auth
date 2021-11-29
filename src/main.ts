@@ -1,10 +1,10 @@
-import { ValidationPipe, VersioningType } from "@nestjs/common";
-import { NestFactory } from "@nestjs/core";
-import { AppModule } from "./app/app.module";
-import * as passport from "passport";
-import { SwaggerConfig } from "./config/swagger.config";
-import { SessionConfig } from "./config/session.config";
-import * as helmet from "helmet";
+import { ValidationPipe, VersioningType } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app/app.module';
+import * as passport from 'passport';
+import { SwaggerConfig } from './config/swagger.config';
+import { SessionConfig } from './config/session.config';
+import * as helmet from 'helmet';
 
 const { BASE_URL } = process.env;
 

@@ -1,25 +1,25 @@
-import { Test, TestingModule } from "@nestjs/testing";
-import { ChecklistItemController } from "./checklist-item.controller";
-import { ChecklistItemDto } from "../dto/checklist-item.dto";
-import { ChecklistItemService } from "../services/checklist-item.service";
-import { ChecklistItem } from "../entities/checklist-item.entity";
-import { BadRequestException } from "@nestjs/common";
+import { Test, TestingModule } from '@nestjs/testing';
+import { ChecklistItemController } from './checklist-item.controller';
+import { ChecklistItemDto } from '../dto/checklist-item.dto';
+import { ChecklistItemService } from '../services/checklist-item.service';
+import { ChecklistItem } from '../entities/checklist-item.entity';
+import { BadRequestException } from '@nestjs/common';
 
-jest.mock("../services/checklist-item.service.ts");
+jest.mock('../services/checklist-item.service.ts');
 
 const resultItem = new ChecklistItem();
 resultItem.id = 1;
-resultItem.item = "Go to school";
+resultItem.item = 'Go to school';
 
-const wrongInput1 = new ChecklistItemDto("");
+const wrongInput1 = new ChecklistItemDto('');
 
 const updatedItem = new ChecklistItem();
 updatedItem.id = 1;
-updatedItem.item = "Go to hell";
+updatedItem.item = 'Go to hell';
 
 const listResult = [resultItem];
 
-describe("--- ChecklistItemController ---", () => {
+describe('--- ChecklistItemController ---', () => {
   let controller: ChecklistItemController;
   let service: ChecklistItemService;
 
@@ -33,11 +33,11 @@ describe("--- ChecklistItemController ---", () => {
     service = module.get<ChecklistItemService>(ChecklistItemService);
   });
 
-  it("should be defined", () => {
+  it('should be defined', () => {
     expect(controller).toBeDefined();
   });
 
-  it("can validate items entered", async () => {
+  it('can validate items entered', async () => {
     return controller
       .create(wrongInput1)
       .then(() => {
@@ -48,7 +48,7 @@ describe("--- ChecklistItemController ---", () => {
       });
   });
 
-  it("can add new items", async () => {
+  it('can add new items', async () => {
     service.create = jest.fn().mockResolvedValue(resultItem);
 
     return controller.create(resultItem).then((result: ChecklistItem) => {
@@ -57,7 +57,7 @@ describe("--- ChecklistItemController ---", () => {
     });
   });
 
-  it("can read one item", async () => {
+  it('can read one item', async () => {
     service.findOne = jest.fn().mockResolvedValue(resultItem);
 
     return controller.getOne(resultItem.id).then((result: ChecklistItem) => {
@@ -66,7 +66,7 @@ describe("--- ChecklistItemController ---", () => {
     });
   });
 
-  it("can show error when item does not exist", async () => {
+  it('can show error when item does not exist', async () => {
     return controller
       .getOne(100)
       .then(() => {
@@ -77,7 +77,7 @@ describe("--- ChecklistItemController ---", () => {
       });
   });
 
-  it("can show item list", async () => {
+  it('can show item list', async () => {
     service.findAll = jest.fn().mockResolvedValue(listResult);
 
     return controller.getAll().then((result: []) => {
@@ -86,7 +86,7 @@ describe("--- ChecklistItemController ---", () => {
     });
   });
 
-  it("can update an item", async () => {
+  it('can update an item', async () => {
     service.updateOne = jest.fn().mockResolvedValue(updatedItem);
 
     return controller
@@ -97,7 +97,7 @@ describe("--- ChecklistItemController ---", () => {
       });
   });
 
-  it("can not delete an item that does not exist", async () => {
+  it('can not delete an item that does not exist', async () => {
     service.deleteOne = jest.fn().mockResolvedValue({ deleted: false });
 
     return controller.deleteOne(resultItem.id).then((result) => {
@@ -106,7 +106,7 @@ describe("--- ChecklistItemController ---", () => {
     });
   });
 
-  it("can delete an item", async () => {
+  it('can delete an item', async () => {
     service.deleteOne = jest.fn().mockResolvedValue({ deleted: true });
 
     return controller.deleteOne(resultItem.id).then((result) => {

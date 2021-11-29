@@ -7,12 +7,12 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn
-} from "typeorm";
-import * as bcrypt from "bcryptjs";
-import { Exclude, Expose } from "class-transformer";
-import { ApiProperty } from "@nestjs/swagger";
-import { UserPrivilege } from "../../user-privileges/entities/user-privilege.entity";
-import { Role } from "../enums/role.enum";
+} from 'typeorm';
+import * as bcrypt from 'bcryptjs';
+import { Exclude, Expose } from 'class-transformer';
+import { ApiProperty } from '@nestjs/swagger';
+import { UserPrivilege } from '../../user-privileges/entities/user-privilege.entity';
+import { Role } from '../enums/role.enum';
 
 @Entity()
 export class User extends BaseEntity {
@@ -56,14 +56,14 @@ export class User extends BaseEntity {
 
   @ApiProperty()
   @Column({
-    type: "enum",
+    type: 'enum',
     enum: Role,
     default: Role.User,
     nullable: false
   })
   role: Role;
 
-  @ApiProperty({ type: "boolean" })
+  @ApiProperty({ type: 'boolean' })
   @Expose()
   get isActive() {
     return (

@@ -1,14 +1,14 @@
-import { Test, TestingModule } from "@nestjs/testing";
-import { getRepositoryToken } from "@nestjs/typeorm";
-import { User } from "../users/entities/user.entity";
-import { UserRepository } from "../users/repositories/user.repository";
-import { UsersService } from "../users/services/users.service";
-import { AuthService } from "./auth.service";
+import { Test, TestingModule } from '@nestjs/testing';
+import { getRepositoryToken } from '@nestjs/typeorm';
+import { User } from '../users/entities/user.entity';
+import { UserRepository } from '../users/repositories/user.repository';
+import { UsersService } from '../users/services/users.service';
+import { AuthService } from './auth.service';
 
 const resultArray = [];
 const expectedResult = new User();
 
-describe("AuthService", () => {
+describe('AuthService', () => {
   let service: AuthService;
   let userService: UsersService;
 
@@ -35,7 +35,7 @@ describe("AuthService", () => {
     userService = module.get<UsersService>(UsersService);
   });
 
-  it("should be defined", () => {
+  it('should be defined', () => {
     expect(service).toBeDefined();
     expect(userService).toBeDefined();
   });

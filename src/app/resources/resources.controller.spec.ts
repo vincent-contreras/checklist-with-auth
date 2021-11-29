@@ -1,10 +1,10 @@
-import { Test, TestingModule } from "@nestjs/testing";
-import { ResourcesController } from "./resources.controller";
-import { ResourcesService } from "./resources.service";
+import { Test, TestingModule } from '@nestjs/testing';
+import { ResourcesController } from './resources.controller';
+import { ResourcesService } from './resources.service';
 
-jest.mock("../resources/resources.service.ts");
+jest.mock('../resources/resources.service.ts');
 
-describe("ResourcesController", () => {
+describe('ResourcesController', () => {
   let controller: ResourcesController;
 
   beforeEach(async () => {
@@ -16,7 +16,7 @@ describe("ResourcesController", () => {
     controller = module.get<ResourcesController>(ResourcesController);
   });
 
-  it("should be defined", () => {
+  it('should be defined', () => {
     expect(controller).toBeDefined();
   });
 });

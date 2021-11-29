@@ -1,8 +1,8 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
-import { CreateResourceDto } from "./dto/create-resource.dto";
-import { UpdateResourceDto } from "./dto/update-resource.dto";
-import { Resource } from "./entities/resource.entity";
-import { ResourceRepository } from "./repositories/resource.repository";
+import { BadRequestException, Injectable } from '@nestjs/common';
+import { CreateResourceDto } from './dto/create-resource.dto';
+import { UpdateResourceDto } from './dto/update-resource.dto';
+import { Resource } from './entities/resource.entity';
+import { ResourceRepository } from './repositories/resource.repository';
 
 @Injectable()
 export class ResourcesService {
@@ -21,7 +21,7 @@ export class ResourcesService {
     const resource = await this.resourceRepository.findOne(id);
 
     if (!resource) {
-      throw new BadRequestException("Item should exist");
+      throw new BadRequestException('Item should exist');
     }
 
     return resource;

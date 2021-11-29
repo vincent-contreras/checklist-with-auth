@@ -1,6 +1,6 @@
-import { Injectable, UnauthorizedException } from "@nestjs/common";
-import { User } from "../users/entities/user.entity";
-import { UsersService } from "../users/services/users.service";
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { User } from '../users/entities/user.entity';
+import { UsersService } from '../users/services/users.service';
 
 @Injectable()
 export class AuthService {
@@ -10,11 +10,11 @@ export class AuthService {
     const user = await this.usersService.findOneByUsername(username);
 
     if (!(await user?.validatePassword(password))) {
-      throw new UnauthorizedException("Invalid password.");
+      throw new UnauthorizedException('Invalid password.');
     }
 
     if (!user.activatedAt) {
-      throw new UnauthorizedException("User is currently not activated.");
+      throw new UnauthorizedException('User is currently not activated.');
     }
 
     return user;

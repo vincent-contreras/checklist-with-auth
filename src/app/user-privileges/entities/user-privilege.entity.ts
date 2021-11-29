@@ -5,10 +5,10 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn
-} from "typeorm";
-import { Resource } from "../../resources/entities/resource.entity";
-import { ApiProperty } from "@nestjs/swagger";
-import { User } from "../../users/entities/user.entity";
+} from 'typeorm';
+import { Resource } from '../../resources/entities/resource.entity';
+import { ApiProperty } from '@nestjs/swagger';
+import { User } from '../../users/entities/user.entity';
 
 @Entity()
 export class UserPrivilege {
@@ -16,11 +16,11 @@ export class UserPrivilege {
   @ApiProperty()
   id: number;
 
-  @CreateDateColumn({ type: "datetime", precision: 6 })
+  @CreateDateColumn({ type: 'datetime', precision: 6 })
   @ApiProperty()
   createdAt: Date;
 
-  @UpdateDateColumn({ type: "datetime", precision: 6 })
+  @UpdateDateColumn({ type: 'datetime', precision: 6 })
   @ApiProperty()
   updatedAt: Date;
 
@@ -32,19 +32,19 @@ export class UserPrivilege {
   @ApiProperty()
   userId!: number;
 
-  @Column({ type: "bool", nullable: false, default: false })
+  @Column({ type: 'bool', nullable: false, default: false })
   @ApiProperty()
   canCreate: boolean;
 
-  @Column({ type: "bool", nullable: false, default: false })
+  @Column({ type: 'bool', nullable: false, default: false })
   @ApiProperty()
   canRead: boolean;
 
-  @Column({ type: "bool", nullable: false, default: false })
+  @Column({ type: 'bool', nullable: false, default: false })
   @ApiProperty()
   canUpdate: boolean;
 
-  @Column({ type: "boolean" })
+  @Column({ type: 'boolean' })
   @ApiProperty()
   canDelete: boolean;
 

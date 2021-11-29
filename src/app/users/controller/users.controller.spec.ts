@@ -1,10 +1,10 @@
-import { Test, TestingModule } from "@nestjs/testing";
-import { UsersService } from "../services/users.service";
-import { UsersController } from "./users.controller";
+import { Test, TestingModule } from '@nestjs/testing';
+import { UsersService } from '../services/users.service';
+import { UsersController } from './users.controller';
 
-jest.mock("../services/users.service");
+jest.mock('../services/users.service');
 
-describe("UsersController", () => {
+describe('UsersController', () => {
   let controller: UsersController;
   let service: UsersService;
 
@@ -18,7 +18,7 @@ describe("UsersController", () => {
     service = module.get<UsersService>(UsersService);
   });
 
-  it("should be defined", () => {
+  it('should be defined', () => {
     expect(controller).toBeDefined();
     expect(service).toBeDefined();
   });

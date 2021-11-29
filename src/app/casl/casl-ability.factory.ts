@@ -4,15 +4,15 @@ import {
   AbilityClass,
   ExtractSubjectType,
   Subject
-} from "@casl/ability";
-import { Injectable } from "@nestjs/common";
-import { User } from "../users/entities/user.entity";
-import { Repository } from "typeorm";
-import { Resource } from "../resources/entities/resource.entity";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Action } from "../auth/enum/action.enum";
-import { Role } from "../users/enums/role.enum";
-import { UserPrivilege } from "../user-privileges/entities/user-privilege.entity";
+} from '@casl/ability';
+import { Injectable } from '@nestjs/common';
+import { User } from '../users/entities/user.entity';
+import { Repository } from 'typeorm';
+import { Resource } from '../resources/entities/resource.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Action } from '../auth/enum/action.enum';
+import { Role } from '../users/enums/role.enum';
+import { UserPrivilege } from '../user-privileges/entities/user-privilege.entity';
 
 export type AppAbility = Ability<[Action, Subject]>;
 
