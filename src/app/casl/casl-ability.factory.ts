@@ -30,7 +30,7 @@ export class CaslAbilityFactory {
       Ability as AbilityClass<AppAbility>
     );
 
-    if (!user.activatedAt) {
+    if (!user) {
       return build({
         // Read https://casl.js.org/v5/en/guide/subject-type-detection#use-classes-as-subject-types for details
         detectSubjectType: (item) =>
