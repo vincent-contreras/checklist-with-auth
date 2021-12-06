@@ -1,11 +1,11 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString, Length } from 'class-validator';
+import { IsNotEmpty, IsString, MaxLength } from 'class-validator';
 
 export class ChecklistItemDto {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  @Length(3)
+  @MaxLength(255)
   item: string;
 
   constructor(item: string) {
