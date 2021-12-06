@@ -19,8 +19,6 @@ import {
   ApiTags
 } from '@nestjs/swagger';
 import { DeleteResponse } from '../../commons/dto/delete-response.dto';
-import { AuthorizationGuard } from '../../casl/authorization.guard';
-import { CheckPolicies } from '../../casl/check-policies.decorator';
 import { AppAbility } from '../../casl/casl-ability.factory';
 import { Action } from '../../auth/enum/action.enum';
 
@@ -30,11 +28,6 @@ export class ChecklistItemController {
   constructor(private checklistItemsSvc: ChecklistItemService) {}
 
   @Post()
-  @UseGuards(AuthorizationGuard)
-  @CheckPolicies((ability: AppAbility) =>
-    ability.can(Action.CREATE, 'CHECKLIST-ITEM')
-  )
-  @ApiCookieAuth('checklist-item')
   @ApiOperation({
     summary: 'Create new item',
     description: 'Creates a new item.'
@@ -66,10 +59,6 @@ export class ChecklistItemController {
   }
 
   @Patch('/:id')
-  @UseGuards(AuthorizationGuard)
-  @CheckPolicies((ability: AppAbility) =>
-    ability.can(Action.UPDATE, 'CHECKLIST-ITEM')
-  )
   @ApiCookieAuth('checklist-item')
   @ApiOperation({
     summary: 'Update one item',
@@ -85,10 +74,6 @@ export class ChecklistItemController {
   }
 
   @Delete('/:id')
-  @UseGuards(AuthorizationGuard)
-  @CheckPolicies((ability: AppAbility) =>
-    ability.can(Action.DELETE, 'CHECKLIST-ITEM')
-  )
   @ApiCookieAuth('checklist-item')
   @ApiParam({ name: 'id', description: 'Unique ID of checklist item' })
   @ApiResponse({ status: 200, type: DeleteResponse, isArray: false })
