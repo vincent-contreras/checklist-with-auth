@@ -1,7 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { Repository } from 'typeorm';
 import { getRepositoryToken } from '@nestjs/typeorm';
-import { ChecklistItemDto } from '../dto/checklist-item.dto';
+import { NewChecklistItemDto } from '../dto/new-checklist-item.dto';
+import { UpdateChecklistItemDto } from '../dto/update-checklist-item.dto';
 import { ChecklistItem } from '../entities/checklist-item.entity';
 import { ChecklistItemService } from './checklist-item.service';
 
@@ -75,7 +76,7 @@ describe('--- ChecklistItemService ---', () => {
   });
 
   it('Item을 수정할 수 있다', async () => {
-    const updatedItem = new ChecklistItemDto('Go to Hell');
+    const updatedItem = new NewChecklistItemDto('Go to Hell');
 
     // override original find one function
     repo.findOne = jest.fn().mockResolvedValue(updatedItem);

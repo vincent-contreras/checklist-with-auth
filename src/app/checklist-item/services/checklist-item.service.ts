@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { ChecklistItemDto } from '../dto/checklist-item.dto';
+import { NewChecklistItemDto } from '../dto/new-checklist-item.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ChecklistItem } from '../entities/checklist-item.entity';
 import { Repository } from 'typeorm';
@@ -11,7 +11,7 @@ export class ChecklistItemService {
     private readonly checklistRepository: Repository<ChecklistItem>
   ) {}
 
-  async create(item: ChecklistItemDto): Promise<ChecklistItem> {
+  async create(item: NewChecklistItemDto): Promise<ChecklistItem> {
     const newItem = this.checklistRepository.create(item);
     await this.checklistRepository.save(newItem);
     return newItem;
@@ -33,7 +33,7 @@ export class ChecklistItemService {
 
   async updateOne(
     id: number,
-    updatedValue: ChecklistItemDto
+    updatedValue: NewChecklistItemDto
   ): Promise<ChecklistItem> {
     const item = await this.checklistRepository.findOne(id);
 

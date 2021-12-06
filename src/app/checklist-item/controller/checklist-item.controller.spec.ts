@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ChecklistItemController } from './checklist-item.controller';
-import { ChecklistItemDto } from '../dto/checklist-item.dto';
+import { NewChecklistItemDto } from '../dto/new-checklist-item.dto';
 import { ChecklistItemService } from '../services/checklist-item.service';
 import { ChecklistItem } from '../entities/checklist-item.entity';
 import { BadRequestException } from '@nestjs/common';
@@ -11,7 +11,7 @@ const resultItem = new ChecklistItem();
 resultItem.id = 1;
 resultItem.item = 'Go to school';
 
-const wrongInput1 = new ChecklistItemDto('');
+const wrongInput1 = new NewChecklistItemDto('');
 
 const updatedItem = new ChecklistItem();
 updatedItem.id = 1;

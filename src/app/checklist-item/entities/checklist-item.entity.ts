@@ -10,4 +10,8 @@ export class ChecklistItem {
   @ApiProperty()
   @Column({ nullable: false })
   item: string;
+
+  @ApiProperty()
+  @Column({ type: 'bool', nullable: false, default: false })
+  checked: string;
 }

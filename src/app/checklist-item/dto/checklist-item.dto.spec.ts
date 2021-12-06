@@ -1,7 +1,7 @@
-import { ChecklistItemDto } from './checklist-item.dto';
+import { NewChecklistItemDto } from './new-checklist-item.dto';
 
-describe('ChecklistItemDto', () => {
+describe('NewChecklistItemDto', () => {
   it('should be defined', () => {
-    expect(new ChecklistItemDto('te')).toBeDefined();
+    expect(new NewChecklistItemDto('te')).toBeDefined();
   });
 });

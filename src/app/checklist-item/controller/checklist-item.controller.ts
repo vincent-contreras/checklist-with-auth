@@ -9,7 +9,7 @@ import {
   UseGuards
 } from '@nestjs/common';
 import { ChecklistItemService } from '../services/checklist-item.service';
-import { ChecklistItemDto } from '../dto/checklist-item.dto';
+import { NewChecklistItemDto } from '../dto/new-checklist-item.dto';
 import { ChecklistItem } from '../entities/checklist-item.entity';
 import {
   ApiCookieAuth,
@@ -21,6 +21,7 @@ import {
 import { DeleteResponse } from '../../commons/dto/delete-response.dto';
 import { AppAbility } from '../../casl/casl-ability.factory';
 import { Action } from '../../auth/enum/action.enum';
+import { UpdateChecklistItemDto } from '../dto/update-checklist-item.dto';
 
 @ApiTags('Checklist Item')
 @Controller({ version: '1', path: 'checklist-item' })
@@ -33,7 +34,7 @@ export class ChecklistItemController {
     description: 'Creates a new item.'
   })
   @ApiResponse({ status: 200, type: ChecklistItem, isArray: false })
-  async create(@Body() item: ChecklistItemDto): Promise<ChecklistItem> {
+  async create(@Body() item: NewChecklistItemDto): Promise<ChecklistItem> {
     return await this.checklistItemsSvc.create(item);
   }
 
@@ -68,7 +69,7 @@ export class ChecklistItemController {
   @ApiResponse({ status: 200, type: ChecklistItem, isArray: false })
   update(
     @Param('id') id: number,
-    @Body() item: ChecklistItemDto
+    @Body() item: UpdateChecklistItemDto
   ): Promise<ChecklistItem> {
     return this.checklistItemsSvc.updateOne(id, item);
   }
