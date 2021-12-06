@@ -1,15 +1,15 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsBoolean, IsNotEmpty, IsString, MaxLength } from 'class-validator';
+import { IsBoolean, IsOptional, IsString, MaxLength } from 'class-validator';
 
 export class UpdateChecklistItemDto {
-  @ApiProperty()
+  @ApiProperty({ required: false })
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   @MaxLength(255)
   item: string;
 
-  @ApiProperty()
+  @ApiProperty({ required: false })
   @IsBoolean()
-  @IsNotEmpty()
+  @IsOptional()
   checked: boolean;
 }

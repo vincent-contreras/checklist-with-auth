@@ -41,7 +41,7 @@ export class ChecklistItemService {
       throw new BadRequestException('Item should exist');
     }
     await this.checklistRepository.update({ id }, updatedValue);
-    return item;
+    return await this.checklistRepository.findOne(id);
   }
 
   async deleteOne(id): Promise<{ deleted: boolean; message?: string }> {
